@@ -160,47 +160,47 @@ const Wishlist = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      {/* Premium Header */}
+      {/* Responsive Header */}
       <div className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
-            <div className="flex items-center space-x-4">
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-pink-600 transition-colors duration-200 group">
-                <ArrowLeft size={20} className="group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
-                <span className="font-medium">Back</span>
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6">
+          <div className="flex flex-col space-y-3 sm:space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <button className="flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-pink-600 transition-colors duration-200 group">
+                <ArrowLeft size={18} className="sm:w-5 sm:h-5 group-hover:transform group-hover:-translate-x-1 transition-transform duration-200" />
+                <span className="font-medium text-sm sm:text-base">Back</span>
               </button>
-              <div className="flex items-center space-x-3">
-                <Heart className="text-pink-600 fill-pink-600" size={24} />
-                <h1 className="text-2xl font-light text-gray-900 tracking-wide">My Wishlist</h1>
-                <div className="bg-gradient-to-r from-pink-500 to-rose-500 text-white text-sm px-3 py-1 rounded-full font-medium">
-                  {wishlistItems.length} Items
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <Heart className="text-pink-600 fill-pink-600" size={20} />
+                <h1 className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 tracking-wide">My Wishlist</h1>
+                <div className="bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full font-medium">
+                  {wishlistItems.length}
                 </div>
               </div>
             </div>
 
-            {/* Controls */}
-            <div className="flex flex-wrap items-center space-x-4">
+            {/* Responsive Controls */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
               {/* View Mode Toggle */}
-              <div className="flex bg-white/60 backdrop-blur-sm rounded-2xl border border-gray-200/50 p-1">
+              <div className="flex bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-gray-200/50 p-0.5 sm:p-1">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-xl transition-all duration-200 ${
+                  className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 ${
                     viewMode === 'grid' 
                       ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
                       : 'text-gray-600 hover:text-pink-600'
                   }`}
                 >
-                  <Grid3X3 size={18} />
+                  <Grid3X3 size={16} className="sm:w-4 sm:h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-xl transition-all duration-200 ${
+                  className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl transition-all duration-200 ${
                     viewMode === 'list' 
                       ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
                       : 'text-gray-600 hover:text-pink-600'
                   }`}
                 >
-                  <List size={18} />
+                  <List size={16} className="sm:w-4 sm:h-4" />
                 </button>
               </div>
 
@@ -208,7 +208,7 @@ const Wishlist = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl px-4 py-2 text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
+                className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl sm:rounded-2xl px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-xs sm:text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none min-w-0"
               >
                 <option value="dateAdded">Recently Added</option>
                 <option value="price-low">Price: Low to High</option>
@@ -220,7 +220,7 @@ const Wishlist = () => {
               <select
                 value={filterBy}
                 onChange={(e) => setFilterBy(e.target.value)}
-                className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl px-4 py-2 text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
+                className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-xl sm:rounded-2xl px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-xs sm:text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none min-w-0"
               >
                 <option value="all">All Categories</option>
                 <option value="jewelry">Jewelry</option>
@@ -234,23 +234,23 @@ const Wishlist = () => {
             </div>
           </div>
 
-          {/* Bulk Actions */}
+          {/* Responsive Bulk Actions */}
           {selectedItems.length > 0 && (
-            <div className="mt-4 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200/50 rounded-2xl p-4">
-              <div className="flex items-center justify-between">
-                <span className="text-pink-700 font-medium">
+            <div className="mt-3 sm:mt-4 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200/50 rounded-xl sm:rounded-2xl p-3 sm:p-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
+                <span className="text-pink-700 font-medium text-sm sm:text-base">
                   {selectedItems.length} item{selectedItems.length > 1 ? 's' : ''} selected
                 </span>
-                <div className="flex space-x-3">
+                <div className="flex space-x-2 sm:space-x-3">
                   <button
                     onClick={addSelectedToCart}
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-200 text-sm font-medium"
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-200 text-xs sm:text-sm font-medium"
                   >
                     Add to Cart
                   </button>
                   <button
                     onClick={removeSelectedItems}
-                    className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-xl hover:from-red-600 hover:to-pink-600 transition-all duration-200 text-sm font-medium"
+                    className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl hover:from-red-600 hover:to-pink-600 transition-all duration-200 text-xs sm:text-sm font-medium"
                   >
                     Remove
                   </button>
@@ -261,74 +261,80 @@ const Wishlist = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {wishlistItems.length === 0 ? (
           // Empty State
-          <div className="bg-white/70 backdrop-blur-xl rounded-3xl border border-gray-200/50 p-16 text-center shadow-xl">
-            <Heart className="mx-auto text-gray-400 mb-6" size={64} />
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Your wishlist is empty</h3>
-            <p className="text-gray-500 mb-8 max-w-md mx-auto">
+          <div className="bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-gray-200/50 p-8 sm:p-12 md:p-16 text-center shadow-xl">
+            <Heart className="mx-auto text-gray-400 mb-4 sm:mb-6" size={48} />
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-4">Your wishlist is empty</h3>
+            <p className="text-gray-500 mb-6 sm:mb-8 max-w-md mx-auto text-sm sm:text-base">
               Start building your dream collection by adding items you love to your wishlist
             </p>
-            <button className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-8 py-4 rounded-2xl hover:from-pink-700 hover:to-rose-700 transition-all duration-300 font-medium shadow-xl">
+            <button className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl hover:from-pink-700 hover:to-rose-700 transition-all duration-300 font-medium shadow-xl text-sm sm:text-base">
               Start Shopping
             </button>
           </div>
         ) : (
           <>
             {/* Select All Option */}
-            <div className="mb-6 flex items-center justify-between">
+            <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
               <button
                 onClick={selectAll}
-                className="flex items-center space-x-2 text-gray-600 hover:text-pink-600 transition-colors duration-200"
+                className="flex items-center space-x-2 text-gray-600 hover:text-pink-600 transition-colors duration-200 self-start"
               >
-                <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${
+                <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${
                   selectedItems.length === filteredItems.length 
                     ? 'bg-pink-500 border-pink-500' 
                     : 'border-gray-300 hover:border-pink-400'
                 }`}>
                   {selectedItems.length === filteredItems.length && (
-                    <Check size={12} className="text-white" />
+                    <Check size={10} className="sm:w-3 sm:h-3 text-white" />
                   )}
                 </div>
-                <span className="font-medium">
+                <span className="font-medium text-sm sm:text-base">
                   {selectedItems.length === filteredItems.length ? 'Deselect All' : 'Select All'}
                 </span>
               </button>
-              <span className="text-sm text-gray-500">
+              <span className="text-xs sm:text-sm text-gray-500">
                 Showing {filteredItems.length} of {wishlistItems.length} items
               </span>
             </div>
 
-            {/* Items Grid/List */}
-            <div className={`grid gap-6 ${
+            {/* Responsive Items Grid/List */}
+            <div className={`grid gap-3 sm:gap-4 md:gap-6 ${
               viewMode === 'grid' 
-                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
+                ? 'grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4' 
                 : 'grid-cols-1'
             }`}>
               {filteredItems.map((item) => (
                 <div
                   key={item.id}
-                  className={`bg-white/70 backdrop-blur-xl rounded-3xl border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-300 group overflow-hidden ${
-                    viewMode === 'list' ? 'flex items-center space-x-6 p-6' : 'p-6'
+                  className={`bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-300 group overflow-hidden relative ${
+                    viewMode === 'list' 
+                      ? 'flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 p-3 sm:p-4 md:p-6' 
+                      : 'p-3 sm:p-4 md:p-6'
                   } ${selectedItems.includes(item.id) ? 'ring-2 ring-pink-500 ring-offset-2' : ''}`}
                 >
                   {/* Selection Checkbox */}
                   <button
                     onClick={() => toggleSelection(item.id)}
-                    className={`absolute top-4 left-4 z-10 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
+                    className={`absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 z-10 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
                       selectedItems.includes(item.id)
                         ? 'bg-pink-500 border-pink-500'
                         : 'bg-white/80 border-gray-300 hover:border-pink-400'
                     }`}
                   >
                     {selectedItems.includes(item.id) && (
-                      <Check size={14} className="text-white" />
+                      <Check size={12} className="sm:w-3.5 sm:h-3.5 text-white" />
                     )}
                   </button>
 
                   {/* Product Image */}
-                  <div className={`relative ${viewMode === 'list' ? 'w-32 h-32' : 'w-full h-64'} bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden`}>
+                  <div className={`relative ${
+                    viewMode === 'list' 
+                      ? 'w-full sm:w-24 md:w-32 h-32 sm:h-24 md:h-32 flex-shrink-0' 
+                      : 'w-full h-40 sm:h-48 md:h-56 lg:h-64'
+                  } bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl sm:rounded-2xl overflow-hidden`}>
                     <img
                       src={item.image}
                       alt={item.name}
@@ -336,61 +342,62 @@ const Wishlist = () => {
                     />
                     
                     {/* Badges */}
-                    <div className="absolute top-3 right-3 flex flex-col space-y-2">
+                    <div className="absolute top-2 sm:top-3 right-2 sm:right-3 flex flex-col space-y-1 sm:space-y-2">
                       {item.isNew && (
-                        <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium">
                           NEW
                         </span>
                       )}
                       {item.discount > 0 && (
-                        <span className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        <span className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium">
                           -{item.discount}%
                         </span>
                       )}
                       {!item.inStock && (
-                        <span className="bg-gray-500 text-white text-xs px-2 py-1 rounded-full font-medium flex items-center space-x-1">
-                          <AlertCircle size={10} />
-                          <span>Out of Stock</span>
+                        <span className="bg-gray-500 text-white text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium flex items-center space-x-1">
+                          <AlertCircle size={8} className="sm:w-2.5 sm:h-2.5" />
+                          <span className="hidden sm:inline">Out of Stock</span>
+                          <span className="sm:hidden">OOS</span>
                         </span>
                       )}
                     </div>
 
                     {/* Quick Actions Overlay */}
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center space-x-3">
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center space-x-2 sm:space-x-3">
                       <button
                         onClick={() => addToCart(item.id)}
                         disabled={!item.inStock}
-                        className="bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white hover:scale-110 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <ShoppingCart size={20} className="text-green-600" />
+                        <ShoppingCart size={16} className="sm:w-5 sm:h-5 text-green-600" />
                       </button>
-                      <button className="bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white hover:scale-110 transition-all duration-200">
-                        <Eye size={20} className="text-blue-600" />
+                      <button className="bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white hover:scale-110 transition-all duration-200">
+                        <Eye size={16} className="sm:w-5 sm:h-5 text-blue-600" />
                       </button>
-                      <button className="bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white hover:scale-110 transition-all duration-200">
-                        <Share2 size={20} className="text-purple-600" />
+                      <button className="bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-full hover:bg-white hover:scale-110 transition-all duration-200">
+                        <Share2 size={16} className="sm:w-5 sm:h-5 text-purple-600" />
                       </button>
                     </div>
                   </div>
 
                   {/* Product Details */}
-                  <div className={`${viewMode === 'list' ? 'flex-1' : 'mt-4'} space-y-3`}>
+                  <div className={`${viewMode === 'list' ? 'flex-1' : 'mt-3 sm:mt-4'} space-y-2 sm:space-y-3`}>
                     <div className="flex items-start justify-between">
-                      <div className="flex-1 space-y-2">
-                        <div className="flex items-center space-x-2">
-                          <Crown className="text-amber-500" size={14} />
-                          <span className="text-xs text-gray-500 font-medium tracking-wide">{item.brand}</span>
+                      <div className="flex-1 space-y-1 sm:space-y-2 min-w-0">
+                        <div className="flex items-center space-x-1 sm:space-x-2">
+<Crown className="text-amber-500 flex-shrink-0 sm:w-3.5 sm:h-3.5" size={12} />
+                          <span className="text-xs sm:text-sm text-gray-500 font-medium tracking-wide truncate">{item.brand}</span>
                         </div>
-                        <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 transition-colors duration-200">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-pink-600 transition-colors duration-200 text-sm sm:text-base line-clamp-2">
                           {item.name}
                         </h3>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-1 sm:space-x-2">
                           <div className="flex">
                             {[...Array(5)].map((_, i) => (
                               <Star
                                 key={i}
-                                size={12}
-                                className={`${i < item.rating ? 'text-amber-400 fill-amber-400' : 'text-gray-300'}`}
+                                size={10}
+                                className={`sm:w-3 sm:h-3 ${i < item.rating ? 'text-amber-400 fill-amber-400' : 'text-gray-300'}`}
                               />
                             ))}
                           </div>
@@ -400,19 +407,19 @@ const Wishlist = () => {
                       
                       <button
                         onClick={() => removeFromWishlist(item.id)}
-                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200"
+                        className="p-1.5 sm:p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200 flex-shrink-0 ml-2"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={14} className="sm:w-4 sm:h-4" />
                       </button>
                     </div>
 
                     {/* Price */}
                     <div className="flex items-center space-x-2">
-                      <span className="text-lg font-bold text-gray-900">
+                      <span className="text-base sm:text-lg font-bold text-gray-900">
                         ${item.price.toLocaleString()}
                       </span>
                       {item.originalPrice > item.price && (
-                        <span className="text-sm text-gray-400 line-through">
+                        <span className="text-xs sm:text-sm text-gray-400 line-through">
                           ${item.originalPrice.toLocaleString()}
                         </span>
                       )}
@@ -422,7 +429,7 @@ const Wishlist = () => {
                     <button
                       onClick={() => addToCart(item.id)}
                       disabled={!item.inStock}
-                      className={`w-full py-3 rounded-2xl font-medium transition-all duration-300 ${
+                      className={`w-full py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
                         item.inStock
                           ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl hover:shadow-green-500/25'
                           : 'bg-gray-300 text-gray-500 cursor-not-allowed'
