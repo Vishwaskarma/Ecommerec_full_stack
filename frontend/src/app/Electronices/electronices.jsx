@@ -163,11 +163,6 @@ const ElectronicsSlider = () => {
     }
   };
 
-  // Calculate transform percentage based on current items per view
-  const getTransformValue = () => {
-    return -(currentIndex * (100 / itemsPerView));
-  };
-
   return (
     <div className="bg-gradient-to-br from-gray-50 to-white py-6 sm:py-8 lg:py-12 w-full font-sans">
       <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -219,7 +214,7 @@ const ElectronicsSlider = () => {
             </>
           )}
 
-          {/* Product slider */}
+          {/* Product slider - FIXED SCROLLING */}
           <div 
             className="overflow-hidden mx-2 sm:mx-4"
             onTouchStart={handleTouchStart}
@@ -229,15 +224,14 @@ const ElectronicsSlider = () => {
             <div 
               className="flex transition-transform duration-500 ease-out"
               style={{ 
-                transform: `translateX(${getTransformValue()}%)`,
-                width: `${(electronicsProducts.length / itemsPerView) * 100}%`
+                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`
               }}
             >
               {electronicsProducts.map((product) => (
                 <div 
                   key={product.id} 
                   className="px-2 sm:px-3"
-                  style={{ width: `${100 / electronicsProducts.length}%` }}
+                  style={{ width: `${100 / itemsPerView}%`, flexShrink: 0 }}
                 >
                   <div className="bg-white border border-gray-200 rounded-xl p-3 sm:p-4 lg:p-5 hover:shadow-2xl hover:shadow-gray-900/10 transition-all duration-500 h-full hover:-translate-y-2 relative overflow-hidden group hover:scale-[1.02] hover:border-blue-300">
                     {/* Background Pattern */}
@@ -327,17 +321,9 @@ const ElectronicsSlider = () => {
                     </div>
                     
                     {/* Add to Cart Button */}
-                    <button 
-                      className={`w-full py-1.5 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 flex items-center justify-center space-x-1 sm:space-x-2 ${
-                        product.inStock
-                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105'
-                          : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                      }`}
-                      disabled={!product.inStock}
-                    >
-                      <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span>{product.inStock ? 'Add to Cart' : 'Out of Stock'}</span>
-                    </button>
+                 <button className="bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-green-700 active:bg-green-800 transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+                          ADD
+                        </button>
                   </div>
                 </div>
               ))}

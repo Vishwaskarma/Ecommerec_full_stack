@@ -1,9 +1,10 @@
 "use client";
-
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import {useState, useEffect } from 'react';
 import { Search, ShoppingBag, User, Heart, Menu, X, LogOut, Settings, Package, UserCircle, Crown, Star, Gift, Sparkles, Home, ChevronDown } from 'lucide-react';
 
 const Header = () => {
+  const router = useRouter();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,6 +35,11 @@ const Header = () => {
     setUser(mockUser);
     setIsLoggedIn(true);
   }, []);
+
+
+  const handleNavigate = (path) => {
+    router.push(path);
+  };
 
   const handleLogin = () => {
     const mockUser = {
@@ -214,7 +220,7 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-3xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent tracking-tight group-hover:scale-105 transition-transform duration-300">
-                    KANIDHI
+                    KANNIDHI
                   </span>
                   <span className="text-xs text-gray-500 font-light tracking-widest -mt-1">
                     L U X U R Y  •  S T Y L E
@@ -376,32 +382,40 @@ const Header = () => {
               </div>
 
               {/* Wishlist */}
-              <button className="flex flex-col items-center relative group" aria-label="Wishlist">
-                <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 group-hover:from-green-200 group-hover:to-emerald-200 relative overflow-hidden">
-                  <Heart size={20} className="text-green-600 group-hover:text-green-700 group-hover:fill-green-600 transition-all duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                </div>
-                <span className="text-xs font-medium text-gray-600 mt-2 group-hover:text-green-600 transition-colors duration-300">
-                  Wishlist
-                </span>
-                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium shadow-lg">
-                  3
-                </span>
-              </button>
+           <button
+    onClick={() => handleNavigate('/wishlist')}
+    className="flex flex-col items-center relative group"
+    aria-label="Wishlist"
+  >
+    <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 group-hover:from-green-200 group-hover:to-emerald-200 relative overflow-hidden">
+      <Heart size={20} className="text-green-600 group-hover:text-green-700 group-hover:fill-green-600 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+    </div>
+    <span className="text-xs font-medium text-gray-600 mt-2 group-hover:text-green-600 transition-colors duration-300">
+      Wishlist
+    </span>
+    <span className="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium shadow-lg">
+      3
+    </span>
+  </button>
 
               {/* Cart */}
-              <button className="flex flex-col items-center relative group" aria-label="Cart">
-                <div className="w-10 h-10 bg-gradient-to-br from-teal-100 to-green-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 group-hover:from-teal-200 group-hover:to-green-200 relative overflow-hidden">
-                  <ShoppingBag size={20} className="text-teal-600 group-hover:text-green-700 transition-all duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                </div>
-                <span className="text-xs font-medium text-gray-600 mt-2 group-hover:text-teal-600 transition-colors duration-300">
-                  Cart
-                </span>
-                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-teal-500 to-green-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium shadow-lg animate-pulse">
-                  2
-                </span>
-              </button>
+             <button
+    onClick={() => handleNavigate('/cart')}
+    className="flex flex-col items-center relative group"
+    aria-label="Cart"
+  >
+    <div className="w-10 h-10 bg-gradient-to-br from-teal-100 to-green-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 group-hover:from-teal-200 group-hover:to-green-200 relative overflow-hidden">
+      <ShoppingBag size={20} className="text-teal-600 group-hover:text-green-700 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+    </div>
+    <span className="text-xs font-medium text-gray-600 mt-2 group-hover:text-teal-600 transition-colors duration-300">
+      Cart
+    </span>
+    <span className="absolute -top-1 -right-1 bg-gradient-to-r from-teal-500 to-green-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium shadow-lg animate-pulse">
+      2
+    </span>
+  </button>
             </div>
           </div>
 
@@ -474,7 +488,7 @@ const Header = () => {
                 </div>
                 <div>
                   <div className="text-xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                    KANIDHI
+                    KANNIDHI
                   </div>
                   <div className="text-xs text-gray-500 font-light tracking-wide">LUXURY STORE</div>
                 </div>
@@ -701,33 +715,33 @@ const Header = () => {
       )}
 
       {/* Bottom Navigation for Mobile - Only show on small devices */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-200/50 z-40 sm:hidden">
-        <div className="grid grid-cols-5 h-16">
-          {[
-            { icon: Home, label: 'Home', color: 'text-green-600' },
-            { icon: Search, label: 'Search', color: 'text-blue-600', action: () => setIsSearchOpen(true) },
-            { icon: ShoppingBag, label: 'Cart', color: 'text-purple-600', badge: '2' },
-            { icon: Heart, label: 'Wishlist', color: 'text-red-600', badge: '3' },
-            { icon: User, label: 'Profile', color: 'text-gray-600', action: () => setIsUserMenuOpen(true) }
-          ].map((item, index) => (
-            <button
-              key={index}
-              onClick={item.action}
-              className="flex flex-col items-center justify-center py-2 px-1 relative group"
-            >
-              <div className="relative">
-                <item.icon size={20} className={`${item.color} group-hover:scale-110 transition-all duration-200`} />
-                {item.badge && (
-                  <span className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-medium text-[10px]">
-                    {item.badge}
-                  </span>
-                )}
-              </div>
-              <span className={`text-xs mt-1 ${item.color} font-medium`}>{item.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+     <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-200/50 z-40 sm:hidden">
+    <div className="grid grid-cols-5 h-16">
+      {[
+        { icon: Home, label: 'Home', color: 'text-green-600' },
+        { icon: Search, label: 'Search', color: 'text-blue-600', action: () => setIsSearchOpen(true) },
+        { icon: ShoppingBag, label: 'cart', color: 'text-purple-600', badge: '2', action: () => handleNavigate('/cart') },
+        { icon: Heart, label: 'wishlist', color: 'text-red-600', badge: '3', action: () => handleNavigate('/wishlist') },
+        { icon: User, label: 'Profile', color: 'text-gray-600', action: () => setIsUserMenuOpen(true) }
+      ].map((item, index) => (
+        <button
+          key={index}
+          onClick={item.action}
+          className="flex flex-col items-center justify-center py-2 px-1 relative group"
+        >
+          <div className="relative">
+            <item.icon size={20} className={`${item.color} group-hover:scale-110 transition-all duration-200`} />
+            {item.badge && (
+              <span className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-medium text-[10px]">
+                {item.badge}
+              </span>
+            )}
+          </div>
+          <span className={`text-xs mt-1 ${item.color} font-medium`}>{item.label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
 
       {/* Demo Login Button */}
       {!isLoggedIn && (

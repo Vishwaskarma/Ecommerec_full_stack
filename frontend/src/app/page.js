@@ -9,6 +9,7 @@ import ElectronicsSlider from "./Electronices/electronices";
 import ElectronicsBanner from "./Electronices/electronicesBanner";
 import SnacksSlider from "./Snacks/SnakeComponent";
 import SnacksBanner from "./Snacks/SnacksBanner";
+import TopCategoriesPage from "./TopCategory/TopCategory";
 
 
 
@@ -17,6 +18,7 @@ export default function Home() {
     <>
     <WatchSlider/>
     {/* <NewArrival/> */}
+    <TopCategoriesPage/>
     <ElectronicsSlider/>
     <ElectronicsBanner/>
     <DairyProductsSlider />
