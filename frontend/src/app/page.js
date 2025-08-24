@@ -9,7 +9,7 @@ import ElectronicsSlider from "./Electronices/electronices";
 import ElectronicsBanner from "./Electronices/electronicesBanner";
 import SnacksSlider from "./Snacks/SnakeComponent";
 import SnacksBanner from "./Snacks/SnacksBanner";
-import TopCategoriesPage from "./TopCategory/TopCategory";
+import TopCategoriesPage from "./categories/page";
 
 
 
